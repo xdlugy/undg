@@ -1,8 +1,11 @@
 # UNDG
 Fun project of a music forum
+TDD - write tests
 
 ## TODO:
-- create the DB with tables and populate it
+- ~~create the DB with tables~~
+- Create template directories and files - create a HTML boilerplate for all twig template files
+- Create routes
 
 ## Functionalities
 - Song of the day/week
@@ -94,9 +97,12 @@ users
 - date_created
 - avatar
 - type
-- position (array(default:user))
 
-user_positions
+users_positions
+- user_id
+- position_id
+
+positions
 - default: user
 - rapper
 - producer
@@ -113,10 +119,11 @@ integrations_definitions
 - tidal
 - soundcloud
 
-user_integrations
+users_integrations
+- user_id
 - user
 - password (hashed)
-- platform
+- integration_id
 - status (default: active, disabled)
 
 user_playlists

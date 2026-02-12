@@ -37,6 +37,14 @@ WORKDIR /var/www/html
 
 RUN chown -R symfony:symfony /var/www/html
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.127.0.0.1 = host.docker.internal" >>
+/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+COPY --from=ghcr.io/phpstan/phpstan:[TAG] /composer/vendor/phpstan/phpstan/phpstan.phar /app/phpstan.phar
+
 EXPOSE 80 9000
 
 CMD ["/entrypoint.sh"]
